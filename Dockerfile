@@ -1,4 +1,3 @@
 FROM adoptopenjdk/openjdk11:latest
-ARG JAR_FILE=target/*.jar
-RUN cp ${JAR_FILE} app.jar
+RUN cp target/colegio-sena-backend-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
