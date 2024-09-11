@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11:latest
-RUN mkdir /opt/app
+ARG JAR_FILE=target/*-exec.jar
+COPY ${JAR_FILE} app.jar
 EXPOSE 8080
-COPY ./target/colegio-sena-backend-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
