@@ -1,4 +1,5 @@
 FROM adoptopenjdk/openjdk11:latest
+RUN mvn clean install -DskipTests
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 EXPOSE 8080
