@@ -8,7 +8,7 @@ VOLUME /tmp
 EXPOSE 8080
 
 # The application's jar file
-ARG JAR_FILE=target/colegio-sena-backend-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE=target/*.jar
 
 # Add the application's jar to the container
 RUN mv ${JAR_FILE} /app.jar
