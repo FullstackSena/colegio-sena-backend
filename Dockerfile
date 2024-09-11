@@ -1,17 +1,12 @@
-# Start with a base image containing Java runtime
-FROM openjdk:11 as build
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
 
-# Add a volume pointing to /tmp
-VOLUME /tmp
-
-# Make port 8080 available to the world outside this container
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/demo-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# The application's jar file
-ARG JAR_FILE=target/*.jar
-
-# Add the application's jar to the container
-RUN mv ${JAR_FILE} /app.jar
-
-# Run the jar file
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
