@@ -1,11 +1,9 @@
-FROM ubuntu:latest AS build
-RUN apt-get update
-RUN apt-get install openjdk-11-jdk -y
+FROM maven:2.4.2-openjdk-11 AS build
 COPY . .
-RUN ./gradlew bootJar --no-daemon
+RUN mvn clean package -DskipTests
 
 FROM openjdk:11-jdk-slim
 EXPOSE 8080
-COPY target/colegio-sena-backend-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build target/colegio-sena-backend-0.0.1-SNAPSHOT.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
