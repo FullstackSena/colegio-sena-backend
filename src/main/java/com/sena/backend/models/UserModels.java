@@ -1,4 +1,3 @@
-/*
 package com.sena.backend.models;
 
 import javax.persistence.*;
@@ -53,4 +52,3 @@ public class UserModels {
     // Campo 'email', mapeado a una columna de la tabla 'users' que almacenará el correo electrónico del usuario.
     private String email;
 }
-*/

@@ -1,10 +1,11 @@
 package com.sena.backend.services;
 
-import com.sena.backend.models.UserDto;
+import com.sena.backend.models.UserModels;
 import com.sena.backend.repositories.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -13,13 +14,7 @@ public class UserService {
     @Autowired
     private IUserRepository userRepository;
 
-    public List<UserDto> getAllUsers() {
-        return userRepository.getAllUsers();
-    }
-
-
-
-    /*public List<UserModels> getAllUsers() {
+    public List<UserModels> getAllUsers() {
         try {
             return userRepository.findAll();
         } catch (Exception e) {
@@ -60,5 +55,5 @@ public class UserService {
         } catch (Exception e) {
             throw new RuntimeException("Error deleting user");
         }
-    }*/
+    }
 }

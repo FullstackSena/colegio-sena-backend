@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages={"com.sena.backend"})
 public class ColegioSenaBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ColegioSenaBackendApplication.class, args);
