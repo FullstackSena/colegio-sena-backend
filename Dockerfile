@@ -1,5 +1,5 @@
 # Start with a base image containing Java runtime
-FROM adoptopenjdk/openjdk11:latest
+FROM openjdk:11 as build
 
 # Add a volume pointing to /tmp
 VOLUME /tmp
